@@ -28,7 +28,7 @@ internal class CsvReader(context: Context) {
                             .forEach {
                                 val csvMap: MutableMap<String, Any> = mutableMapOf()
                                 it.forEachIndexed { i1, s1 ->
-                                    csvMap[header[i1]] = s1.replace("\"", "")//.toIntOrString()
+                                    csvMap[header[i1]] = s1.replace("\"", "")
                                 }
                                 csvMapList.add(csvMap)
                             }
@@ -59,7 +59,7 @@ internal class CsvReader(context: Context) {
                             .forEach {
                                 val csvMap: MutableMap<String, Any> = mutableMapOf()
                                 it.forEachIndexed { index, column ->
-                                    csvMap[header[index]] = column.replace("\"", "")//.toIntOrString()
+                                    csvMap[header[index]] = column.replace("\"", "")
                                 }
                                 csvMapList.add(csvMap)
                             }
@@ -82,12 +82,12 @@ internal class CsvReader(context: Context) {
                 assetsManager.open(fileName).use {
                     it.bufferedReader().useLines {
                         val sequenceList = it.toList()
-                        // ヘッダーを取得
+
                         sequenceList.first()
                                 .split(",")
                                 .forEach { header.add(it.replace("\"", "")) }
 
-                        // ヘッダーを飛ばして取得
+
                         sequenceList.takeLast(sequenceList.size - 1)
                                 .map { it.split(",") }
                                 .forEach {
@@ -116,12 +116,12 @@ internal class CsvReader(context: Context) {
                 res.openRawResource(resId).use {
                     it.bufferedReader().useLines {
                         val sequenceList = it.toList()
-                        // ヘッダーを取得
+
                         sequenceList.first()
                                 .split(",")
                                 .forEach { header.add(it.replace("\"", "")) }
 
-                        // ヘッダーを飛ばして取得
+
                         sequenceList.takeLast(sequenceList.size - 1)
                                 .map { it.split(",") }
                                 .forEach {
